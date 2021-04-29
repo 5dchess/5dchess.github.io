@@ -1,43 +1,125 @@
-extends layout
+// Lichess is open source! See https://lichess.org/source
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width,initial-scale=1,viewport-fit=cover')
+  meta(http-equiv='Content-Security-Policy' content="default-src 'self' https://lichess1.org; connect-src 'self' https://lichess1.org wss://socket0.lichess.org wss://socket1.lichess.org wss://socket2.lichess.org wss://socket3.lichess.org wss://socket4.lichess.org wss://socket5.lichess.org https://explorer.lichess.ovh https://tablebase.lichess.ovh; style-src 'self' 'unsafe-inline' https://lichess1.org; font-src 'self' lichess1.org https://fonts.gstatic.com; frame-src 'self' https://lichess1.org https://www.youtube.com https://player.twitch.tv; worker-src 'self' https://lichess1.org; img-src data: *; script-src 'nonce-z7QMw07Am8V5ouXaafDqDIKt' 'self' https://lichess1.org; base-uri 'none';")
+  meta(name='theme-color' content='#dbd7d1')
+  title lichess.org &bull; Free Online Chess
+  link(href='https://lichess1.org/assets/_NwpOs4/css/site.light.min.css' rel='stylesheet')
+  link(href='https://lichess1.org/assets/_NwpOs4/css/lobby.light.min.css' rel='stylesheet')
+  link#piece-sprite(href='https://lichess1.org/assets/_NwpOs4/piece-css/cburnett.css' rel='stylesheet')
+  link(rel='mask-icon' href='https://lichess1.org/assets/_NwpOs4/logo/lichess.svg' style='color: black;')
+  link(rel='icon' type='image/png' href='https://lichess1.org/assets/_CA0Yyh/logo/lichess-favicon-512.png' sizes='512x512')
+  link(rel='icon' type='image/png' href='https://lichess1.org/assets/_CA0Yyh/logo/lichess-favicon-256.png' sizes='256x256')
+  link(rel='icon' type='image/png' href='https://lichess1.org/assets/_CA0Yyh/logo/lichess-favicon-192.png' sizes='192x192')
+  link(rel='icon' type='image/png' href='https://lichess1.org/assets/_CA0Yyh/logo/lichess-favicon-128.png' sizes='128x128')
+  link(rel='icon' type='image/png' href='https://lichess1.org/assets/_CA0Yyh/logo/lichess-favicon-64.png' sizes='64x64')
+  link#favicon(rel='icon' type='image/png' href='https://lichess1.org/assets/_CA0Yyh/logo/lichess-favicon-32.png' sizes='32x32')
+  meta(name='google' content='notranslate')
+  meta(property='og:url' content='https://lichess.org')
+  meta(property='og:type' content='website')
+  meta(property='og:site_name' content='lichess.org')
+  meta(property='og:image' content='https://lichess1.org/assets/_NwpOs4/logo/lichess-tile-wide.png')
 
-block content
-
-  #banner.jumbotron
-    .container
-      h1 5D Chess
-      p.
-        A real-time multi-player 5d chess app 
-      p.
-        WIP on html right now, sorry for the downtime
-      p.
-        <a class="btn btn-primary" href="https://www.youtube.com/watch?v=eqMEiBu4M1c">
-        Tutorial video
-        </a>
-
-
-  #welcome.container
-    .div(style="width:500px")
-      label(for="playerName") Name
-      input#playerName.form-control(type="text", name="player-name", placeholder="Player 1",style="margin:5px")
-      button#nameSubmit.btn.btn-primary(type="submit",style="margin:5px") Begin
-  
-  #gameoptions.container(hidden='')
-    button#single.btn.btn-primary() Singleplayer
-    button#multi.btn.btn-primary() Multiplayer
-    
-  #multiplayer.container(hidden='')
-    
-    
-  audio#music(src="https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2Fytmp3free.cc_mittsies-vitality-youtubemp3free.org.mp3?v=1619244746188" loop="true" autoplay)
-  script.
-    const audio = document.getElementById('music');
-    audio.volume = 0.2;
-
-  script(src="/js/jquery.min.js")
-  script(src="/js/bootstrap.min.js")
-  
-  script.
-    $('#nameSubmit')[0].onclick = function() {
-       $('#welcome').fadeOut();
-       $('#gameoptions').fadeIn();
-    };
+header#top
+  .site-title-nav
+    input#tn-tg.topnav-toggle.fullscreen-toggle(type='checkbox' autocomplete='off' aria-label='Navigation')
+    label.fullscreen-mask(for='tn-tg')
+    label.hbg(for='tn-tg')
+      span.hbg__in
+    h1.site-title
+      a(href='/')
+        | lichess
+        span .org
+    nav#topnav.hover
+      section
+        a(href='/')
+          span.play Play
+          span.home lichess.org
+        div(role='group')
+          a(href='/?any#hook') Create a game
+      section
+        a(href='/practice') Learn
+        div(role='group')
+          a(href='/learn') Tutorials
+          a(href='https://www.youtube.com/watch?v=eqMEiBu4M1c') Videos
+      section
+        a(href='/analysis') Tools
+        div(role='group')
+          a(href='/analysis') Analysis board
+          a(href='/editor') Board editor
+          a(href='/paste') Import game
+  .site-buttons
+    #clinput
+      a.link
+        span(data-icon='y')
+      input(spellcheck='false' autocomplete='false' aria-label='Search' placeholder='Search')
+    div
+      a#challenge-toggle.toggle.link
+        span.data-count(title='Challenges' data-count='0' data-icon='U')
+      #challenge-app.dropdown
+    div
+      a#notify-toggle.toggle.link
+        span.data-count(title='Notifications' data-count='0' data-icon='')
+      #notify-app.dropdown
+    .dasher
+      a#user_tag.toggle.link(href='/logout') DROP_TABLES
+      #dasher_app.dropdown
+#main-wrap.is2d
+  main.lobby
+    .lobby__table
+      .bg-switch(title='Dark mode')
+        .bg-switch__track
+        .bg-switch__thumb
+      .lobby__counters
+        a#nb_connected_players(href='/player')
+          strong(data-count='84296') 84,310
+          |  players
+        a#nb_games_in_play(href='/games')
+          strong(data-count='34096') 34,096
+          |  games in play
+    .lobby__app.lobby__app-pools
+      .tabs-horiz
+        span.active Quick pairing
+        span Lobby
+        span Correspondence
+      .lobby__app__content.lpools
+        div(data-id='1+0')
+          .clock 1+0
+          .perf Bullet
+        div(data-id='2+1')
+          .clock 2+1
+          .perf Bullet
+        div(data-id='3+0')
+          .clock 3+0
+          .perf Blitz
+        div(data-id='3+2')
+          .clock 3+2
+          .perf Blitz
+        div(data-id='5+0')
+          .clock 5+0
+          .perf Blitz
+        div(data-id='5+3')
+          .clock 5+3
+          .perf Blitz
+        div(data-id='10+0')
+          .clock 10+0
+          .perf Rapid
+        div(data-id='10+5')
+          .clock 10+5
+          .perf Rapid
+        div(data-id='15+10')
+          .clock 15+10
+          .perf Rapid
+        div(data-id='30+0')
+          .clock 30+0
+          .perf Classical
+        div(data-id='30+20')
+          .clock 30+20
+          .perf Classical
+        .custom(data-id='custom') Custom
+    .lobby__about
+      a(href='/about') About Lichess
+      a(href='/faq') FAQ
+      a(href='/contact') Contact
+      a(href='/mobile') Mobile App
