@@ -1,17 +1,3 @@
-body  { background-color: #f8f8f8; }
-table { border-collapse: collapse; }
-
-#banner { background-color: #222222; color: #ffffff; }
-.navbar{
-  margin-bottom: 0;
-}
-
-#startForm, #joinForm { padding: 15px; }
-
-/*
- * Title Bar
- */
-
 #title-bar, #game {
   position: fixed;
 }
