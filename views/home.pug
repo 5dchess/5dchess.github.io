@@ -63,20 +63,17 @@ header#top
         span.data-count(title='Notifications' data-count='0' data-icon='')
       #notify-app.dropdown
     .dasher
-      a#user_tag.toggle.link(href='/logout') DROP_TABLES
+      a#user_tag.toggle.link(href='/logout') Player
       #dasher_app.dropdown
 #main-wrap.is2d
   main.lobby
     .lobby__table
-      .bg-switch(title='Dark mode')
-        .bg-switch__track
-        .bg-switch__thumb
       .lobby__counters
         a#nb_connected_players(href='/player')
-          strong(data-count='84296') 84,310
+          strong(data-count='0') 0
           |  players
         a#nb_games_in_play(href='/games')
-          strong(data-count='34096') 34,096
+          strong(data-count='0') 0
           |  games in play
     .lobby__app.lobby__app-pools
       .tabs-horiz
