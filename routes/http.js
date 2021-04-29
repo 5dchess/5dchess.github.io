@@ -64,18 +64,14 @@ var validateJoinGame = function(req) {
   };
 };
 
-/**
- * Render "Home" Page
- */
+//HOME render
 var home = function(req, res) {
 
   // Welcome
   res.render('home');
 };
 
-/**
- * Render "Game" Page (or redirect to home page if session is invalid)
- */
+//GAME render
 var game = function(req, res) {
 
   // Validate session data
