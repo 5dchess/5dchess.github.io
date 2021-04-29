@@ -2,7 +2,7 @@ const c = document.querySelector("#c");
 const dpi = window.devicePixelRatio;
 const dpiinv = 1/dpi;
 const ctx = c.getContext("2d");
-
+ctx.imageSmoothingEnabled = 'false';
 //sounds
 const sfx = {
   move: new Audio('https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2Fpublic_sound_standard_Move.mp3?v=1619558550313'),
@@ -107,7 +107,30 @@ c.onwheel = zoom;
 //
 //
 var Client = (function(window) {
+  this.status = 'pending';
 
+  this.activePlayer = null;
+
+  this.players = [
+    {color: null, name: null, joined: false, inCheck: false, forfeited: false},
+    {color: null, name: null, joined: false, inCheck: false, forfeited: false}
+  ];
+  
+  //spacetime, indexed by timeline
+  this.spacetime = {0:this.newTL({src:{time:-1,timeline:-1},init:initBoard,id:0})};
+  
+  //present bar
+  this.present = 0;
+  
+  //move format: src(pos+piece), end(pos+piece), type(string)
+  //pos format: timeline, time, x, y
+
+  this.lastMove = [];
+  
+  this.validMoves = null;
+  
+  this.checks = {white:[],black:[]};
+  
   var socket      = null;
   //NOTE: this.validMoves keys should be stringified before referencing
 
@@ -161,8 +184,8 @@ var Client = (function(window) {
   var cameraDownPos = null;
   
   
-  ctx.imageSmoothingEnabled = 'false';
-  //draws a small curved arrow
+  
+  //draws a small  arrow
   function drawArrow(src, end, color){
     let ymod = playerColor=="white"?1:-1;
     let srcpt = playerColor=="white"?[src.time*(boardScale+boardBuffer)+src.x*boardScale/8+boardScale/16,-ymod*(boardScale+boardBuffer)*src.timeline+(7-src.y)*boardScale/8+boardScale/16]:[src.time*(boardScale+boardBuffer)+(7-src.x)*boardScale/8+boardScale/16,-ymod*(boardScale+boardBuffer)*src.timeline+(src.y)*boardScale/8+boardScale/16];
