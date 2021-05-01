@@ -80,7 +80,7 @@ header#top
         span#lobby Lobby
         span#correspondence Correspondence
         span#inplay 0 games in play
-      .lobby__app__content.lpools(style="display:none")
+      #lpools.lobby__app__content.lpools
         div(data-id='1+0')
           .clock 1+0
           .perf Bullet
@@ -117,7 +117,7 @@ header#top
         .custom(data-id='custom') Custom
     
     
-      .lobby__app__content.lreal_time
+      #lreal_time.lobby__app__content.lreal_time(style="display:none")
         table.hooks__list
           thead
             tr
@@ -257,6 +257,6 @@ header#top
       a(href='/faq') FAQ
       a(href='/contact') Contact
       a(href='/mobile') Mobile App
-      
-
+        
+script(src="/js/jquery.min.js")
 sript(src='/js/events.js')
