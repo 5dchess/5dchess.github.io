@@ -329,7 +329,140 @@ header#top
                   | Casual
         .create
           a.button Create a game
-    
+          
+      #lnow_playing.lobby__app__content.lnow_playing(style="display:none")
+          table.hooks__list
+            thead
+              tr
+                th
+                th Player
+                th.sortable.sort
+                  i.is
+                  | Rating
+                th.sortable
+                  i.is
+                  | Time
+                th Mode
+            tbody
+              tr.hook.join(title='Join the game | Blitz' data-id='kdid350l')
+                td
+                  span.is.is2.color-icon.random
+                td
+                  span.ulink.ulpt(data-href='/@/JOHN-2') JOHN-2
+                td 1915
+                td &half;+4
+                td
+                  span(data-icon=')') Rated
+              tr.hook.join.disabled(title='' data-id='TDxmkhdk')
+                td
+                  span.is.is2.color-icon.random
+                td
+                  span.ulink.ulpt(data-href='/@/Eleanor-Rigby') Eleanor-Rigby
+                td 1892
+                td 5+0
+                td
+                  span(data-icon=')') Casual
+              tr.hook.join(title='Join the game | Classical' data-id='j9oFu2BC')
+                td
+                  span.is.is2.color-icon.random
+                td
+                  span.ulink.ulpt(data-href='/@/mauroivannobile') mauroivannobile
+                td 1762
+                td 60+30
+                td
+                  span(data-icon='+') Rated
+              tr.hook.join(title='Join the game | Classical' data-id='1bCVBOqc')
+                td
+                  span.is.is2.color-icon.white
+                td
+                  span.ulink.ulpt(data-href='/@/Moldy') Moldy
+                td 1712
+                td 20+8
+                td
+                  span(data-icon='+') Rated
+              tr.hook.join(title='Join the game | Classical' data-id='FwHTSQ0m')
+                td
+                  span.is.is2.color-icon.white
+                td
+                  span.ulink.ulpt(data-href='/@/Jovem36') Jovem36
+                td 1692
+                td 30+0
+                td
+                  span(data-icon='+') Rated
+              tr.hook.join(title='Join the game | Rapid' data-id='rwbtq5qs')
+                td
+                  span.is.is2.color-icon.random
+                td
+                  span.ulink.ulpt(data-href='/@/risato123') risato123
+                td 1679
+                td 16+0
+                td
+                  span(data-icon='#') Rated
+              tr.hook.join(title='Join the game | Rapid' data-id='biRL76x4')
+                td
+                  span.is.is2.color-icon.random
+                td
+                  span.ulink.ulpt(data-href='/@/azorahoi') azorahoi
+                td 1647
+                td 5+8
+                td
+                  span(data-icon='#') Rated
+              tr.hook.join.disabled(title='' data-id='RGLqqy7R')
+                td
+                  span.is.is2.color-icon.black
+                td
+                  span.ulink.ulpt(data-href='/@/Zamiatin') Zamiatin
+                td 1546
+                td 5+5
+                td
+                  span(data-icon='#') Rated
+              tr.hook.join(title='Join the game | Classical' data-id='nUFNEJON')
+                td
+                  span.is.is2.color-icon.white
+                td
+                  span.ulink.ulpt(data-href='/@/CCIM-Joshua-2009') CCIM-Joshua-2009
+                td 1500?
+                td 180+0
+                td
+                  span(data-icon='+') Casual
+              tr.variants
+                td(colspan='5') &mdash; Variant &mdash;
+              tr.hook.join(title='Join the game | Horde' data-id='WjafuIkm')
+                td
+                  span.is.is2.color-icon.random
+                td
+                  span.ulink.ulpt(data-href='/@/MAXCUP2012') MAXCUP2012
+                td 1743
+                td 1+0
+                td
+                  span(data-icon='_') Rated
+              tr.hook.join(title='Join the game | Crazyhouse' data-id='TpdYTAvl')
+                td
+                  span.is.is2.color-icon.random
+                td
+                  span.ulink.ulpt(data-href='/@/Kiriu_66') Kiriu_66
+                td 1578
+                td 10+0
+                td
+                  span(data-icon='') Rated
+              tr.hook.join.disabled(title='' data-id='xNJNz7AV')
+                td
+                  span.is.is2.color-icon.random
+                td
+                  span.ulink.ulpt(data-href='/@/Stede') Stede
+                td 1517
+                td 10+5
+                td
+                  span(data-icon='.') Rated
+              tr.hook.join.disabled(title='' data-id='mFYlxC0J')
+                td
+                  span.is.is2.color-icon.random
+                td
+                  span.ulink.ulpt(data-href='/@/Nuke_Gambit') Nuke_Gambit
+                td 1477
+                td 0+1
+                td
+                  span(data-icon='>') Casual
     
     
     .lobby__about
