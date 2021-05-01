@@ -1,5 +1,5 @@
-console.log("uwu");
 const tabs = [$('pairing'),$('lobby'),$('correspondence'),$('ingame')];
 $('#tabs').click(function (e) {
-    alert(e.target.id); // The id of the clicked element
+  tabs.forEach(x=>x[0].classList.remove('active'));
+  alert(e.target.id);
 });
