@@ -1,5 +1,7 @@
-const tabs = [$('pairing'),$('lobby'),$('correspondence'),$('ingame')];
+const tabs = ['pairing','lobby','correspondence','inplay'];
 $('#tabs').click(function (e) {
-  tabs.forEach(x=>x[0].classList.remove('active'));
-  alert(e.target.id);
+  tabs.forEach(x=>document.getElementById(x).classList.remove('active'));
+  document.getElementById(e.target.id).classList.add('active');
+  
 });
+
