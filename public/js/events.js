@@ -9,9 +9,8 @@ $('#tabs').click(function (e) {
   document.getElementById(e.target.id).classList.add('active');
   document.getElementById(tabs[e.target.id]).style.display = "inline";
 });
+
 $('#lobbycreate').click(function(e) {
   $('.game-setup').css("display" , "block");
-  document.getElementById('modal-overlay').style['z-index'] = 100;
-  document.getElementById('modal-overlay').style['position'] = 'absolute';
 });
 
