@@ -31,14 +31,15 @@ head
           label(for='sf_variant') Variant
           select#sf_variant(name='variant')
             option(value='1', title='Standard rules of chess (FIDE)', selected='selected') Standard
-            option(value='10', title='Captured pieces can be dropped back on the board instead of moving a piece.') Crazyhouse
-            option(value='2', title='Starting position of the home rank pieces is randomized.') Chess960
-            option(value='4', title='Bring your King to the center to win the game.') King of the Hill
-            option(value='5', title='Check your opponent 3 times to win the game.') Three-check
-            option(value='6', title='Lose all your pieces (or get stalemated) to win the game.') Antichess
-            option(value='7', title="Nuke your opponent's king to win.") Atomic
-            option(value='8', title='Destroy the horde to win!') Horde
-            option(value='9', title='Race your King to the eighth rank to win.') Racing Kings
+            //
+              option(value='10', title='Captured pieces can be dropped back on the board instead of moving a piece.') Crazyhouse
+              option(value='2', title='Starting position of the home rank pieces is randomized.') Chess960
+              option(value='4', title='Bring your King to the center to win the game.') King of the Hill
+              option(value='5', title='Check your opponent 3 times to win the game.') Three-check
+              option(value='6', title='Lose all your pieces (or get stalemated) to win the game.') Antichess
+              option(value='7', title="Nuke your opponent's king to win.") Atomic
+              option(value='8', title='Destroy the horde to win!') Horde
+              option(value='9', title='Race your King to the eighth rank to win.') Racing Kings
         .time_mode_config.optional_config
           .label_select
             label(for='sf_timeMode') Time control
