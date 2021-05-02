@@ -10,15 +10,15 @@ $('#tabs').click(function (e) {
   document.getElementById(tabs[e.target.id]).style.display = "inline";
 });
 
+//lobby create game button
 $('#lobbycreate').click(function(e) {
-  $('.game-setup').css("display" , "block");
+  $('.game-setup').css("display" , "flex");
 });
 
+//game creation overlay
 $('#modal-overlay').click(function(e){
-  console.log("iwi");
-  console.log(e.target);
-  switch(e.target.id){
-    case "close":  $('.game-setup').css("display" , "none"); console.log("iuwu");
+  switch(e.target.className){
+    case "close":  $('.game-setup').css("display" , "none");
   }
 });
 
