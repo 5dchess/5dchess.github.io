@@ -11,6 +11,6 @@ $('#tabs').click(function (e) {
   document.getElementById(tabs[e.target.id]).style.display = "inline";
 });
 $('#lobbycreate').click(function(e) {
-  document.getElementById('game-setup').style.visibility = "visible";
+  $('.game-setup').css("display" , "block");
 });
 
