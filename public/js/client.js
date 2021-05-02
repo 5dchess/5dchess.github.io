@@ -2,7 +2,33 @@ const c = document.querySelector("#c");
 const dpi = window.devicePixelRatio;
 const dpiinv = 1/dpi;
 const ctx = c.getContext("2d");
+
+//images
 ctx.imageSmoothingEnabled = 'false';
+var pIMG = {};
+if(true){ //for collapsing
+  pIMG[__] = new Image;
+  pIMG[wP] = new Image; pIMG[wP].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwP.svg?v=1617102031643";
+  pIMG[wR] = new Image; pIMG[wR].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwR.svg?v=1617102031925";
+  pIMG[wN] = new Image; pIMG[wN].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwN.svg?v=1617102031915";
+  pIMG[wB] = new Image; pIMG[wB].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwB.svg?v=1617102037456";
+  pIMG[wQ] = new Image; pIMG[wQ].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwQ.svg?v=1617102031643";
+  pIMG[wK] = new Image; pIMG[wK].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwK.svg?v=1617102031712";
+  pIMG[wP_] = pIMG[wP];
+  pIMG[wR_] = pIMG[wR];
+  pIMG[wK_] = pIMG[wK];
+  pIMG[bP] = new Image; pIMG[bP].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbP.svg?v=1617102118623";
+  pIMG[bR] = new Image; pIMG[bR].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbR.svg?v=1617102119358";
+  pIMG[bN] = new Image; pIMG[bN].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbN.svg?v=1617102119524";
+  pIMG[bB] = new Image; pIMG[bB].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbB.svg?v=1617102118548";
+  pIMG[bQ] = new Image; pIMG[bQ].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbQ.svg?v=1617102119676";
+  pIMG[bK] = new Image; pIMG[bK].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbK.svg?v=1617102118749";
+  pIMG[bP_] = pIMG[bP];
+  pIMG[bR_] = pIMG[bR];
+  pIMG[bK_] = pIMG[bK];
+}
+var bIMG = new Image; bIMG.src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2Fbrown.svg?v=1617102060746";
+
 //sounds
 const sfx = {
   move: new Audio('https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2Fpublic_sound_standard_Move.mp3?v=1619558550313'),
@@ -84,9 +110,6 @@ function deepClone(obj, hash = new WeakMap()) {
   );
 }
 
-Array.prototype.last = function() {
-    return deepClone(this[this.length - 1]);
-}
 
 //ZOOM FUNCTION
 //
@@ -107,121 +130,18 @@ c.onwheel = zoom;
 //
 //
 var Client = (function(window) {
-  this.status = 'pending';
-
-  this.activePlayer = null;
-
-  this.players = [
-    {color: null, name: null, joined: false, inCheck: false, forfeited: false},
-    {color: null, name: null, joined: false, inCheck: false, forfeited: false}
-  ];
   
-  //spacetime, indexed by timeline
-  this.spacetime = {0:this.newTL({src:{time:-1,timeline:-1},init:initBoard,id:0})};
-  
-  //present bar
-  this.present = 0;
-  
-  //move format: src(pos+piece), end(pos+piece), type(string)
-  //pos format: timeline, time, x, y
-
-  this.lastMove = [];
-  
-  this.validMoves = null;
-  
-  this.checks = {white:[],black:[]};
   
   var socket      = null;
-  //NOTE: this.validMoves keys should be stringified before referencing
-
-  var gameID      = null;
-  var playerColor = null;
-  var playerName  = null;
 
   var container   = null;
   var messages    = null;
-  var statusblip  = null;
-  
-
-  var move = {}; 
-  var nextPresent;
-
-  var selection   = null;
-  var CAMERA      = {x:0,y:0};
-  centerCAM({time:0,timeline:0});
   
   var gameOverMessage     = null;
   var pawnPromotionPrompt = null;
   var forfeitPrompt       = null;
   
-  var pIMG = {};
-  if(true){ //for collapsing
-    pIMG[__] = new Image;
-    pIMG[wP] = new Image; pIMG[wP].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwP.svg?v=1617102031643";
-    pIMG[wR] = new Image; pIMG[wR].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwR.svg?v=1617102031925";
-    pIMG[wN] = new Image; pIMG[wN].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwN.svg?v=1617102031915";
-    pIMG[wB] = new Image; pIMG[wB].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwB.svg?v=1617102037456";
-    pIMG[wQ] = new Image; pIMG[wQ].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwQ.svg?v=1617102031643";
-    pIMG[wK] = new Image; pIMG[wK].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwK.svg?v=1617102031712";
-    pIMG[wP_] = pIMG[wP];
-    pIMG[wR_] = pIMG[wR];
-    pIMG[wK_] = pIMG[wK];
-    pIMG[bP] = new Image; pIMG[bP].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbP.svg?v=1617102118623";
-    pIMG[bR] = new Image; pIMG[bR].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbR.svg?v=1617102119358";
-    pIMG[bN] = new Image; pIMG[bN].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbN.svg?v=1617102119524";
-    pIMG[bB] = new Image; pIMG[bB].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbB.svg?v=1617102118548";
-    pIMG[bQ] = new Image; pIMG[bQ].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbQ.svg?v=1617102119676";
-    pIMG[bK] = new Image; pIMG[bK].src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbK.svg?v=1617102118749";
-    pIMG[bP_] = pIMG[bP];
-    pIMG[bR_] = pIMG[bR];
-    pIMG[bK_] = pIMG[bK];
-  }
-  var bIMG = new Image; bIMG.src = "https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2Fbrown.svg?v=1617102060746";
-  
-  
-  var selected = null;
-  var mouseDownPos = null;
-  var cameraDownPos = null;
-  
-  
-  
-  //draws a small  arrow
-  function drawArrow(src, end, color){
-    let ymod = playerColor=="white"?1:-1;
-    let srcpt = playerColor=="white"?[src.time*(boardScale+boardBuffer)+src.x*boardScale/8+boardScale/16,-ymod*(boardScale+boardBuffer)*src.timeline+(7-src.y)*boardScale/8+boardScale/16]:[src.time*(boardScale+boardBuffer)+(7-src.x)*boardScale/8+boardScale/16,-ymod*(boardScale+boardBuffer)*src.timeline+(src.y)*boardScale/8+boardScale/16];
-    let endpt = playerColor=="white"?[end.time*(boardScale+boardBuffer)+end.x*boardScale/8+boardScale/16,-ymod*(boardScale+boardBuffer)*end.timeline+(7-end.y)*boardScale/8+boardScale/16]:[end.time*(boardScale+boardBuffer)+(7-end.x)*boardScale/8+boardScale/16,-ymod*(boardScale+boardBuffer)*end.timeline+(end.y)*boardScale/8+boardScale/16];
-    
-    let deltapt = [endpt[0]-srcpt[0],endpt[1]-srcpt[1]];
-    let pmag = 1/Math.sqrt(deltapt[0]*deltapt[0]+deltapt[1]*deltapt[1]);
-    
-    srcpt = [srcpt[0]+deltapt[0]*pmag*boardScale/16,srcpt[1]+deltapt[1]*pmag*boardScale/16];
-    endpt = [endpt[0]-deltapt[0]*pmag*boardScale/16,endpt[1]-deltapt[1]*pmag*boardScale/16];
-    
-    deltapt = [endpt[0]-srcpt[0],endpt[1]-srcpt[1]];
-    pmag = 1/Math.sqrt(deltapt[0]*deltapt[0]+deltapt[1]*deltapt[1]);
-    let pslope = [-deltapt[1],deltapt[0]];
-    let hscale = 0.06;
-    
-    ctx.beginPath();
-    ctx.moveTo(endpt[0],endpt[1]);
-    ctx.lineTo(endpt[0]+(pslope[0]-deltapt[0])*pmag*boardScale*hscale,endpt[1]+(pslope[1]-deltapt[1])*pmag*boardScale*hscale);
-    ctx.lineTo(endpt[0]+(-pslope[0]-deltapt[0])*pmag*boardScale*hscale,endpt[1]+(-pslope[1]-deltapt[1])*pmag*boardScale*hscale);
-    ctx.fillStyle = color;
-    ctx.fill();
-    ctx.closePath();
-    
-    //negates perpendicular slope if negative to curve upwarxs
-    if((pslope[0]<0&&pslope[1]>0) || (pslope[0]>0&&pslope[1]<0)) pslope[1]=-pslope[1];
-    
-    ctx.beginPath();
-    ctx.moveTo(srcpt[0],srcpt[1]);
-    //ctx.quadraticCurveTo(srcpt[0]+deltapt[0]*0.5+pslope[0]*0.2,srcpt[1]+deltapt[1]*0.5+pslope[1]*0.2,endpt[0]-deltapt[0]*hscale*boardScale*pmag,endpt[1]-deltapt[1]*hscale*boardScale*pmag);
-    ctx.lineTo(endpt[0]-deltapt[0]*hscale*boardScale*pmag,endpt[1]-deltapt[1]*hscale*boardScale*pmag);
-    ctx.strokeStyle = color;
-    ctx.lineWidth = boardScale*0.125*0.5;
-    ctx.stroke();
-    ctx.closePath();
-  }
+  var games
   
   function draw(){
     //canvas part
@@ -879,8 +799,12 @@ var Client = (function(window) {
 
 }(window));
 
+class Game{
+  
+};
+
 //checks to see if a position is a valid location
-Client.prototype.validPos = function(pos){
+Game.prototype.validPos = function(pos){
   if(pos.x>-1 && pos.x<8 && pos.y>-1 && pos.y<8) 
     if(pos.timeline in this.spacetime)
       if(pos.time>-1 && pos.time<this.spacetime[pos.timeline].boards.length)
@@ -890,7 +814,7 @@ Client.prototype.validPos = function(pos){
 }
 
 //checks color based on piece
-Client.prototype.getTeam = function(piece){
+Game.prototype.getTeam = function(piece){
   if(piece.piece>-100) piece = piece.piece;
   else if(piece.x>-1){ //is position input, convert to piece
     piece = this.spacetime[piece.timeline].boards[piece.time][piece.x][piece.y];
@@ -902,13 +826,13 @@ Client.prototype.getTeam = function(piece){
 }
 
 //returns piece value at position
-Client.prototype.getPiece = function(pos){
+Game.prototype.getPiece = function(pos){
   if(!this.validPos(pos)) return false;
   return this.spacetime[pos.timeline].boards[pos.time][pos.x][pos.y];
 }
 
 //adds move p2 to position p1 and returns new position, order DOES matter
-Client.prototype.addPos = function(p1,p2){
+Game.prototype.addPos = function(p1,p2){
   let ret = {x:p1.x+p2.x,y:p1.y+p2.y,timeline:Number(p1.timeline)+Number(p2.timeline),time:Number(p1.time)+2*Number(p2.time)};
   //NOTE: time is scaled x2 due to black/white both on time
   if(!this.validPos(ret)) {
@@ -922,7 +846,7 @@ Client.prototype.addPos = function(p1,p2){
 }
 
 //returns the lists of pair of positions that are checking and in check 
-Client.prototype.getChecks = function(){
+Game.prototype.getChecks = function(){
   let ret = {"white":[],"black":[]};
   for(let tli in this.spacetime){
     for(let ooo = 0; ooo < this.spacetime[tli].boards.length; ooo++){
@@ -956,7 +880,7 @@ Client.prototype.getChecks = function(){
 }
 
 //checks to see if the position is being attacked by enemy pieces
-Client.prototype.findChecks = function(pos,team){
+Game.prototype.findChecks = function(pos,team){
   let ret = [];
   let modifier = team=="white"? 10:0;
   //checks for knight attacks
@@ -1068,12 +992,12 @@ Client.prototype.findChecks = function(pos,team){
 
 //checks to see if any player is checkmated
 //note: you are checkmated if your king remains attacked by an ACTIVE piece. If the piece cannot take your king the next move, then it is not checkmate
-Client.prototype.getCheckmate = function(){
+Game.prototype.getCheckmate = function(){
   
 }
 
 //recalculates the present bar
-Client.prototype.findPresent = function() {
+Game.prototype.findPresent = function() {
   let i = 0;
   let ppp = -1;
   for(let x in this.spacetime) ppp = Math.max(ppp,this.spacetime[x].boards.length);
@@ -1090,7 +1014,7 @@ Client.prototype.findPresent = function() {
 }
 
 //initializes and returns a timeline object
-Client.prototype.newTL = function(params){
+Game.prototype.newTL = function(params){
   let ret = {
     branch: {timeline: params.src.timeline, time:params.src.time},
     timeline: params.id,
@@ -1106,7 +1030,7 @@ Client.prototype.newTL = function(params){
 }
 
 //does move
-Client.prototype.doMove = function(onemove){
+Game.prototype.doMove = function(onemove){
     let sfxtype = "move";
     console.log(onemove.src.piece,onemove.end.piece);
     if(onemove.src.piece>=0 && onemove.src.piece<10&&onemove.end.piece>=10&&onemove.end.piece<20) sfxtype = 'capture';

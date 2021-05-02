@@ -386,11 +386,11 @@ group.radio div:last-child label {
 }
 
 .game-setup .color-submits__button.white i {
-    background-image: url("../images/../piece/cburnett/wK.svg")
+    background-image: url("https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FwK.svg?v=1617102031712")
 }
 
 .game-setup .color-submits__button.black i {
-    background-image: url("../images/../piece/cburnett/bK.svg")
+    background-image: url("https://cdn.glitch.com/5e0f9006-3453-41ad-b0eb-222438390afa%2FbK.svg?v=1617102118749")
 }
 
 .game-setup .color-submits__button.random {
@@ -400,7 +400,7 @@ group.radio div:last-child label {
 }
 
 .game-setup .color-submits__button.random i {
-    background-image: url("../images/wbK.svg");
+    background-image: url("https://cdn.glitch.com/966c6b80-3647-408a-b871-2ffc510e2df4%2FwbK.svg?v=1619939221958");
     background-size: 65px 65px;
     width: 65px;
     height: 65px
