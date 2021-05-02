@@ -14,3 +14,11 @@ $('#lobbycreate').click(function(e) {
   $('.game-setup').css("display" , "block");
 });
 
+$('#modal-overlay').click(function(e){
+  console.log("iwi");
+  console.log(e.target);
+  switch(e.target.id){
+    case "close":  $('.game-setup').css("display" , "none"); console.log("iuwu");
+  }
+});
+
