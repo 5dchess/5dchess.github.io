@@ -46,8 +46,7 @@ head
             label(for='sf_timeMode') Time control
             select#sf_timeMode(name='timeMode')
               option(value='1') Real time
-              option(value='2', selected='selected') Correspondence
-              option(value='0') Unlimited
+              option(value='0',selected='selected') Unlimited
           .time_choice.range(style='display: none;')
             | Minutes per side: 
             span 5
@@ -58,20 +57,14 @@ head
             span 3
             input.range-value(name='increment', value='3', type='hidden')
             input.range(name='increment_range', type='range', min='0', max='30', value='3')
-          .correspondence
-            .days_choice.range
-              | Days per turn: 
-              span 2
-              input.range-value(name='days', value='2', type='hidden')
-              input.range(name='days_range', type='range', min='1', max='7', value='2')
         .mode_choice.buttons
           group.radio
             div
-              input#sf_mode_0(type='radio', name='mode', value='0')
-              label.required(for='sf_mode_0') Casual
+              input#sf_mode_0(type='radio', name='mode', value='0',checked='checked')
+              label.required(for='sf_mode_0') Public
             div
-              input#sf_mode_1(type='radio', name='mode', value='1', checked='checked')
-              label.required(for='sf_mode_1') Rated
+              input#sf_mode_1(type='radio', name='mode', value='1')
+              label.required(for='sf_mode_1') Private
         .optional_config
           .rating-range-config
             | Rating range
