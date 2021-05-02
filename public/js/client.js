@@ -131,7 +131,7 @@ c.onwheel = zoom;
 //
 var Client = (function(window) {
   
-  
+  var playerName  = null;
   var socket      = null;
 
   var container   = null;
@@ -568,8 +568,6 @@ var Client = (function(window) {
    * Initialize the UI
    */
   var init = function(config) {
-    gameID      = config.gameID;
-    playerColor = config.playerColor;
     playerName  = config.playerName;
 
     container           = $('#game');
@@ -577,7 +575,6 @@ var Client = (function(window) {
     gameOverMessage     = $('#game-over');
     pawnPromotionPrompt = $('#pawn-promotion');
     forfeitPrompt       = $('#forfeit-game');
-    statusblip          = $('#status');
     
     // Set the radio button images
     

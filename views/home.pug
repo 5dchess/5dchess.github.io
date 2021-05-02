@@ -527,4 +527,15 @@ header#top
       a(href='/mobile') Mobile App
       
   script(src="/js/jquery.min.js")
+  script(src="/socket.io/socket.io.js")
   script(src="/js/events.js")
+  script(src="/js/client.js")
+
+script(src="/js/fastclick.js")
+  script.
+    $(document).ready(function() {
+      FastClick.attach(document.body);
+      window.Client({
+        playerName  : "#{playerName}"
+      });
+    });
