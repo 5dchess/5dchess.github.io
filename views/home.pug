@@ -76,182 +76,168 @@ header#top
           |  games in play
     .lobby__app.lobby__app-pools
       #tabs.tabs-horiz
-        span#pairing.active Quick pairing
-        span#lobby Lobby
-        span#correspondence Correspondence
-        span#inplay 0 games in play
-      #lpools.lobby__app__content.lpools
-        div(data-id='1+0')
-          .clock 1+0
-          .perf Bullet
-        div(data-id='2+1')
-          .clock 2+1
-          .perf Bullet
-        div(data-id='3+0')
-          .clock 3+0
-          .perf Blitz
-        div(data-id='3+2')
-          .clock 3+2
-          .perf Blitz
-        div(data-id='5+0')
-          .clock 5+0
-          .perf Blitz
-        div(data-id='5+3')
-          .clock 5+3
-          .perf Blitz
-        div(data-id='10+0')
-          .clock 10+0
-          .perf Rapid
-        div(data-id='10+5')
-          .clock 10+5
-          .perf Rapid
-        div(data-id='15+10')
-          .clock 15+10
-          .perf Rapid
-        div(data-id='30+0')
-          .clock 30+0
-          .perf Classical
-        div(data-id='30+20')
-          .clock 30+20
-          .perf Classical
-        .custom(data-id='custom') Custom
-    
-    
-      #lreal_time.lobby__app__content.lreal_time(style="display:none")
+        span#lobby.active Lobby
+        span#spec Spectator
+        span#ingame 0 games in play
+      #lobbytab.lobby__app__content.lseeks
         table.hooks__list
           thead
             tr
               th
               th Player
-              th.sortable.sort
-                i.is
-                | Rating
-              th.sortable
-                i.is
-                | Time
+              th Rating
+              th Time
               th Mode
           tbody
-            tr.hook.join(title='Join the game | Blitz' data-id='kdid350l')
+            tr.seek.join(title='Join the game - Correspondence', data-id='81UB4jnT')
               td
                 span.is.is2.color-icon.random
               td
-                span.ulink.ulpt(data-href='/@/JOHN-2') JOHN-2
-              td 1915
-              td &half;+4
+                span.ulpt(data-href='/@/A_Palimpsest') A_Palimpsest
+              td 1849
+              td 2 days
               td
-                span(data-icon=')') Rated
-            tr.hook.join.disabled(title='' data-id='TDxmkhdk')
-              td
-                span.is.is2.color-icon.random
-              td
-                span.ulink.ulpt(data-href='/@/Eleanor-Rigby') Eleanor-Rigby
-              td 1892
-              td 5+0
-              td
-                span(data-icon=')') Casual
-            tr.hook.join(title='Join the game | Classical' data-id='j9oFu2BC')
+                span
+                  span.varicon(data-icon=';')
+                  | Rated
+            tr.seek.join(title='Join the game - Correspondence', data-id='bPAbZkg8')
               td
                 span.is.is2.color-icon.random
               td
-                span.ulink.ulpt(data-href='/@/mauroivannobile') mauroivannobile
-              td 1762
-              td 60+30
+                span.ulpt(data-href='/@/littlepazos') littlepazos
+              td 1600?
+              td 3 days
               td
-                span(data-icon='+') Rated
-            tr.hook.join(title='Join the game | Classical' data-id='1bCVBOqc')
+                span
+                  span.varicon(data-icon=';')
+                  | Rated
+            tr.seek.join(title='Join the game - Correspondence', data-id='dhSpUXR9')
               td
                 span.is.is2.color-icon.white
               td
-                span.ulink.ulpt(data-href='/@/Moldy') Moldy
-              td 1712
-              td 20+8
-              td
-                span(data-icon='+') Rated
-            tr.hook.join(title='Join the game | Classical' data-id='FwHTSQ0m')
-              td
-                span.is.is2.color-icon.white
-              td
-                span.ulink.ulpt(data-href='/@/Jovem36') Jovem36
-              td 1692
-              td 30+0
-              td
-                span(data-icon='+') Rated
-            tr.hook.join(title='Join the game | Rapid' data-id='rwbtq5qs')
-              td
-                span.is.is2.color-icon.random
-              td
-                span.ulink.ulpt(data-href='/@/risato123') risato123
-              td 1679
-              td 16+0
-              td
-                span(data-icon='#') Rated
-            tr.hook.join(title='Join the game | Rapid' data-id='biRL76x4')
-              td
-                span.is.is2.color-icon.random
-              td
-                span.ulink.ulpt(data-href='/@/azorahoi') azorahoi
-              td 1647
-              td 5+8
-              td
-                span(data-icon='#') Rated
-            tr.hook.join.disabled(title='' data-id='RGLqqy7R')
-              td
-                span.is.is2.color-icon.black
-              td
-                span.ulink.ulpt(data-href='/@/Zamiatin') Zamiatin
-              td 1546
-              td 5+5
-              td
-                span(data-icon='#') Rated
-            tr.hook.join(title='Join the game | Classical' data-id='nUFNEJON')
-              td
-                span.is.is2.color-icon.white
-              td
-                span.ulink.ulpt(data-href='/@/CCIM-Joshua-2009') CCIM-Joshua-2009
+                span.ulpt(data-href='/@/Walter1959') Walter1959
               td 1500?
-              td 180+0
+              td 2 days
               td
-                span(data-icon='+') Casual
-            tr.variants
-              td(colspan='5') &mdash; Variant &mdash;
-            tr.hook.join(title='Join the game | Horde' data-id='WjafuIkm')
+                span
+                  span.varicon(data-icon=';')
+                  | Casual
+            tr.seek.join(title='Join the game - Correspondence', data-id='pRqjHStM')
               td
-                span.is.is2.color-icon.random
+                span.is.is2.color-icon.white
               td
-                span.ulink.ulpt(data-href='/@/MAXCUP2012') MAXCUP2012
-              td 1743
-              td 1+0
+                span.ulpt(data-href='/@/Walter1959') Walter1959
+              td 1500?
+              td &infin;
               td
-                span(data-icon='_') Rated
-            tr.hook.join(title='Join the game | Crazyhouse' data-id='TpdYTAvl')
+                span
+                  span.varicon(data-icon=';')
+                  | Casual
+            tr.seek.join(title='Join the game - Correspondence', data-id='3WlA60ON')
               td
-                span.is.is2.color-icon.random
+                span.is.is2.color-icon.white
               td
-                span.ulink.ulpt(data-href='/@/Kiriu_66') Kiriu_66
-              td 1578
-              td 10+0
+                span.ulpt(data-href='/@/Defdamzey') Defdamzey
+              td 1341?
+              td 14 days
               td
-                span(data-icon='') Rated
-            tr.hook.join.disabled(title='' data-id='xNJNz7AV')
-              td
-                span.is.is2.color-icon.random
-              td
-                span.ulink.ulpt(data-href='/@/Stede') Stede
-              td 1517
-              td 10+5
-              td
-                span(data-icon='.') Rated
-            tr.hook.join.disabled(title='' data-id='mFYlxC0J')
+                span
+                  span.varicon(data-icon=';')
+                  | Rated
+            tr.seek.join(title='Join the game - Correspondence', data-id='ViTycgEf')
               td
                 span.is.is2.color-icon.random
               td
-                span.ulink.ulpt(data-href='/@/Nuke_Gambit') Nuke_Gambit
-              td 1477
-              td 0+1
+                span.ulpt(data-href='/@/portorico2') portorico2
+              td 1200?
+              td 2 days
               td
-                span(data-icon='>') Casual
+                span
+                  span.varicon(data-icon=';')
+                  | Casual
+        .create
+          a.button Create a game
+    
+    
+      #spectab.lobby__app__content.lseeks(style="display:none")
+        table.hooks__list
+          thead
+            tr
+              th
+              th Player
+              th Rating
+              th Time
+              th Mode
+          tbody
+            tr.seek.join(title='Join the game - Correspondence', data-id='81UB4jnT')
+              td
+                span.is.is2.color-icon.random
+              td
+                span.ulpt(data-href='/@/A_Palimpsest') A_Palimpsest
+              td 1849
+              td 2 days
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Rated
+            tr.seek.join(title='Join the game - Correspondence', data-id='bPAbZkg8')
+              td
+                span.is.is2.color-icon.random
+              td
+                span.ulpt(data-href='/@/littlepazos') littlepazos
+              td 1600?
+              td 3 days
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Rated
+            tr.seek.join(title='Join the game - Correspondence', data-id='dhSpUXR9')
+              td
+                span.is.is2.color-icon.white
+              td
+                span.ulpt(data-href='/@/Walter1959') Walter1959
+              td 1500?
+              td 2 days
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Casual
+            tr.seek.join(title='Join the game - Correspondence', data-id='pRqjHStM')
+              td
+                span.is.is2.color-icon.white
+              td
+                span.ulpt(data-href='/@/Walter1959') Walter1959
+              td 1500?
+              td &infin;
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Casual
+            tr.seek.join(title='Join the game - Correspondence', data-id='3WlA60ON')
+              td
+                span.is.is2.color-icon.white
+              td
+                span.ulpt(data-href='/@/Defdamzey') Defdamzey
+              td 1341?
+              td 14 days
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Rated
+            tr.seek.join(title='Join the game - Correspondence', data-id='ViTycgEf')
+              td
+                span.is.is2.color-icon.random
+              td
+                span.ulpt(data-href='/@/portorico2') portorico2
+              td 1200?
+              td 2 days
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Casual
+          
                 
-      #lseeks.lobby__app__content.lseeks(style="display:none")
+      #ingametab.lobby__app__content.lseeks(style="display:none")
         table.hooks__list
           thead
             tr
@@ -330,139 +316,84 @@ header#top
         .create
           a.button Create a game
           
-      #lnow_playing.lobby__app__content.lnow_playing(style="display:none")
-          table.hooks__list
-            thead
-              tr
-                th
-                th Player
-                th.sortable.sort
-                  i.is
-                  | Rating
-                th.sortable
-                  i.is
-                  | Time
-                th Mode
-            tbody
-              tr.hook.join(title='Join the game | Blitz' data-id='kdid350l')
-                td
-                  span.is.is2.color-icon.random
-                td
-                  span.ulink.ulpt(data-href='/@/JOHN-2') JOHN-2
-                td 1915
-                td &half;+4
-                td
-                  span(data-icon=')') Rated
-              tr.hook.join.disabled(title='' data-id='TDxmkhdk')
-                td
-                  span.is.is2.color-icon.random
-                td
-                  span.ulink.ulpt(data-href='/@/Eleanor-Rigby') Eleanor-Rigby
-                td 1892
-                td 5+0
-                td
-                  span(data-icon=')') Casual
-              tr.hook.join(title='Join the game | Classical' data-id='j9oFu2BC')
-                td
-                  span.is.is2.color-icon.random
-                td
-                  span.ulink.ulpt(data-href='/@/mauroivannobile') mauroivannobile
-                td 1762
-                td 60+30
-                td
-                  span(data-icon='+') Rated
-              tr.hook.join(title='Join the game | Classical' data-id='1bCVBOqc')
-                td
-                  span.is.is2.color-icon.white
-                td
-                  span.ulink.ulpt(data-href='/@/Moldy') Moldy
-                td 1712
-                td 20+8
-                td
-                  span(data-icon='+') Rated
-              tr.hook.join(title='Join the game | Classical' data-id='FwHTSQ0m')
-                td
-                  span.is.is2.color-icon.white
-                td
-                  span.ulink.ulpt(data-href='/@/Jovem36') Jovem36
-                td 1692
-                td 30+0
-                td
-                  span(data-icon='+') Rated
-              tr.hook.join(title='Join the game | Rapid' data-id='rwbtq5qs')
-                td
-                  span.is.is2.color-icon.random
-                td
-                  span.ulink.ulpt(data-href='/@/risato123') risato123
-                td 1679
-                td 16+0
-                td
-                  span(data-icon='#') Rated
-              tr.hook.join(title='Join the game | Rapid' data-id='biRL76x4')
-                td
-                  span.is.is2.color-icon.random
-                td
-                  span.ulink.ulpt(data-href='/@/azorahoi') azorahoi
-                td 1647
-                td 5+8
-                td
-                  span(data-icon='#') Rated
-              tr.hook.join.disabled(title='' data-id='RGLqqy7R')
-                td
-                  span.is.is2.color-icon.black
-                td
-                  span.ulink.ulpt(data-href='/@/Zamiatin') Zamiatin
-                td 1546
-                td 5+5
-                td
-                  span(data-icon='#') Rated
-              tr.hook.join(title='Join the game | Classical' data-id='nUFNEJON')
-                td
-                  span.is.is2.color-icon.white
-                td
-                  span.ulink.ulpt(data-href='/@/CCIM-Joshua-2009') CCIM-Joshua-2009
-                td 1500?
-                td 180+0
-                td
-                  span(data-icon='+') Casual
-              tr.variants
-                td(colspan='5') &mdash; Variant &mdash;
-              tr.hook.join(title='Join the game | Horde' data-id='WjafuIkm')
-                td
-                  span.is.is2.color-icon.random
-                td
-                  span.ulink.ulpt(data-href='/@/MAXCUP2012') MAXCUP2012
-                td 1743
-                td 1+0
-                td
-                  span(data-icon='_') Rated
-              tr.hook.join(title='Join the game | Crazyhouse' data-id='TpdYTAvl')
-                td
-                  span.is.is2.color-icon.random
-                td
-                  span.ulink.ulpt(data-href='/@/Kiriu_66') Kiriu_66
-                td 1578
-                td 10+0
-                td
-                  span(data-icon='') Rated
-              tr.hook.join.disabled(title='' data-id='xNJNz7AV')
-                td
-                  span.is.is2.color-icon.random
-                td
-                  span.ulink.ulpt(data-href='/@/Stede') Stede
-                td 1517
-                td 10+5
-                td
-                  span(data-icon='.') Rated
-              tr.hook.join.disabled(title='' data-id='mFYlxC0J')
-                td
-                  span.is.is2.color-icon.random
-                td
-                  span.ulink.ulpt(data-href='/@/Nuke_Gambit') Nuke_Gambit
-                td 1477
-                td 0+1
-                td
-                  span(data-icon='>') Casual
+      #lseeks.lobby__app__content.lseeks(style="display:none")
+        table.hooks__list
+          thead
+            tr
+              th
+              th Player
+              th Rating
+              th Time
+              th Mode
+          tbody
+            tr.seek.join(title='Join the game - Correspondence', data-id='81UB4jnT')
+              td
+                span.is.is2.color-icon.random
+              td
+                span.ulpt(data-href='/@/A_Palimpsest') A_Palimpsest
+              td 1849
+              td 2 days
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Rated
+            tr.seek.join(title='Join the game - Correspondence', data-id='bPAbZkg8')
+              td
+                span.is.is2.color-icon.random
+              td
+                span.ulpt(data-href='/@/littlepazos') littlepazos
+              td 1600?
+              td 3 days
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Rated
+            tr.seek.join(title='Join the game - Correspondence', data-id='dhSpUXR9')
+              td
+                span.is.is2.color-icon.white
+              td
+                span.ulpt(data-href='/@/Walter1959') Walter1959
+              td 1500?
+              td 2 days
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Casual
+            tr.seek.join(title='Join the game - Correspondence', data-id='pRqjHStM')
+              td
+                span.is.is2.color-icon.white
+              td
+                span.ulpt(data-href='/@/Walter1959') Walter1959
+              td 1500?
+              td &infin;
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Casual
+            tr.seek.join(title='Join the game - Correspondence', data-id='3WlA60ON')
+              td
+                span.is.is2.color-icon.white
+              td
+                span.ulpt(data-href='/@/Defdamzey') Defdamzey
+              td 1341?
+              td 14 days
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Rated
+            tr.seek.join(title='Join the game - Correspondence', data-id='ViTycgEf')
+              td
+                span.is.is2.color-icon.random
+              td
+                span.ulpt(data-href='/@/portorico2') portorico2
+              td 1200?
+              td 2 days
+              td
+                span
+                  span.varicon(data-icon=';')
+                  | Casual
+        .create
+          a.button Create a game
     
     
     .lobby__about
