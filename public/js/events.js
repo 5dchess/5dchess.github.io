@@ -1,6 +1,13 @@
 const tabs = {lobby:'lobbytab',spec:'spectab',private:'privatetab',ingame:'ingametab'};
+const modaloverlaycss = {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0,
+  background: 'rgba(0, 0, 0, 0.6)',
+  'z-index': 109};
 
-//
 
 //switching between tabs
 $('#tabs').click(function (e) {
@@ -12,5 +19,7 @@ $('#tabs').click(function (e) {
 });
 $('#lobbycreate').click(function(e) {
   $('.game-setup').css("display" , "block");
+  for(x in modaloverlaycss) $('#modal-overlay').css(x,modaloverlaycss[x]);
+  
 });
 
