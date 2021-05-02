@@ -1,4 +1,6 @@
-const tabs = {lobby:'lobbytab',spec:'spectab',ingame:'ingametab'};
+const tabs = {lobby:'lobbytab',spec:'spectab',private:'privatetab',ingame:'ingametab'};
+
+//
 
 //switching between tabs
 $('#tabs').click(function (e) {
