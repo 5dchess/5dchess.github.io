@@ -10,4 +10,7 @@ $('#tabs').click(function (e) {
   document.getElementById(e.target.id).classList.add('active');
   document.getElementById(tabs[e.target.id]).style.display = "inline";
 });
+$('#lobbycreate').click(function(e) {
+  document.getElementById('modal-overlay').style.position = "absolute";
+});
 
