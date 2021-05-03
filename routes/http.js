@@ -69,6 +69,9 @@ var home = function(req, res) {
 
   // Welcome
   res.render('home');
+  
+  //generates client-side things
+  startClient();
 };
 
 //GAME render
