@@ -71,7 +71,7 @@ var home = function(req, res) {
   res.render('home');
   
   //generates client-side things
-  startClient();
+  startClient(res,req);
 };
 
 //GAME render
