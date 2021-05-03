@@ -58,6 +58,6 @@ $('#modal-overlay').click(function(e){
 });
 
 //checks if any games are in play
-var sess      = this.handshake.session;
+var sess      = socket.handshake.session;
 console.log(sess);
 
