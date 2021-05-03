@@ -29,8 +29,8 @@ $('#lobbyjoin').click(function(e) {
 //singleplayer create game button
 $('#singlecreate').click(function(e) {
   $('.game-setup').css("display" , "flex");
-  $('#createoverlay').css("display" , "none");
-  $('#joinoverlay').css("display" , "block");
+  $('#createoverlay').css("display" , "block");
+  $('#joinoverlay').css("display" , "none");
   setup_mode = "single-create";
 });
 
