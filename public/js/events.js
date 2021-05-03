@@ -13,25 +13,33 @@ $('#tabs').click(function (e) {
 //lobby create game button
 $('#lobbycreate').click(function(e) {
   $('.game-setup').css("display" , "flex");
-  $('joinoverlay').css("display" , "none");
-  $('createoverlay').css("display" , "flex");
+  $('#joinoverlay').css("display" , "none");
+  $('#createoverlay').css("display" , "block");
   setup_mode = "multi-create";
 });
 
 //lobby join game button
 $('#lobbyjoin').click(function(e) {
   $('.game-setup').css("display" , "flex");
-  $('createoverlay').css("display" , "none");
-  $('joinoverlay').css("display" , "flex");
+  $('#createoverlay').css("display" , "none");
+  $('#joinoverlay').css("display" , "block");
   setup_mode = "multi-join";
 });
 
-//lobby create game button
+//singleplayer create game button
 $('#singlecreate').click(function(e) {
   $('.game-setup').css("display" , "flex");
-  $('createoverlay').css("display" , "none");
-  $('joinoverlay').css("display" , "flex");
+  $('#createoverlay').css("display" , "none");
+  $('#joinoverlay').css("display" , "block");
   setup_mode = "single-create";
+});
+
+//spectator create game button
+$('#specjoin').click(function(e) {
+  $('.game-setup').css("display" , "flex");
+  $('#createoverlay').css("display" , "none");
+  $('#joinoverlay').css("display" , "block");
+  setup_mode = "spec-join";
 });
 
 
