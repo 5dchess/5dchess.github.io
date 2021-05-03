@@ -15,6 +15,7 @@ $('#lobbycreate').click(function(e) {
   $('.game-setup').css("display" , "flex");
   $('#joinoverlay').css("display" , "none");
   $('#createoverlay').css("display" , "block");
+  $('.buttons').css("display", "block");
   setup_mode = "multi-create";
 });
 
@@ -30,11 +31,13 @@ $('#lobbyjoin').click(function(e) {
 $('#singlecreate').click(function(e) {
   $('.game-setup').css("display" , "flex");
   $('#createoverlay').css("display" , "block");
+  
   $('#joinoverlay').css("display" , "none");
+  $('.buttons').css("display", "none");
   setup_mode = "single-create";
 });
 
-//spectator create game button
+//spectator join game button
 $('#specjoin').click(function(e) {
   $('.game-setup').css("display" , "flex");
   $('#createoverlay').css("display" , "none");
@@ -53,4 +56,7 @@ $('#modal-overlay').click(function(e){
       $('.game-setup').css("display" , "none");
   }
 });
+
+//checks if any games are in play
+
 
