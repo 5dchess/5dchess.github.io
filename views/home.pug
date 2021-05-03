@@ -5,8 +5,8 @@ head
   meta(name='theme-color' content='#dbd7d1')
   title 5D Chess &bull; Free Online 5D Chess
   link(href='/css/site.light.min.css' rel='stylesheet')
-  link(href='/css/lobby.setup.light.min.css' rel='stylesheet')
   link(href='/css/lobby.light.min.css' rel='stylesheet')
+  link(href='/css/lobby.setup.light.min.css' rel='stylesheet')
   
   link#piece-sprite(href='https://lichess1.org/assets/_NwpOs4/piece-css/cburnett.css' rel='stylesheet')
   link(rel='mask-icon' href='https://lichess1.org/assets/_NwpOs4/logo/lichess.svg' style='color: black;')
@@ -22,7 +22,7 @@ head
   meta(property='og:site_name' content='lichess.org')
   meta(property='og:image' content='https://lichess1.org/assets/_NwpOs4/logo/lichess-tile-wide.png')
 
-#modal-overlay.game-setup
+#modal-overlay.game-setup(style="display:none")
   #modal-wrap
     span.close(data-icon='L')
     div
@@ -277,8 +277,14 @@ header#top
                 span
                   span.varicon(data-icon=';')
                   | Casual
+                  
         #lobbycreate.create
           a.button Create a game
+          
+        spacer(type="block", height="20")
+        
+        #lobbyjoin.create
+          a.button Join with code
 
 
       #spectab.lobby__app__content.lseeks(style="display:none")
@@ -357,7 +363,7 @@ header#top
                 span
                   span.varicon(data-icon=';')
                   | Casual
-        .create
+        #specjoin.create
           a.button Join with code         
 
       #privatetab.lobby__app__content.lseeks(style="display:none")
@@ -436,8 +442,8 @@ header#top
                 span
                   span.varicon(data-icon=';')
                   | Casual
-        .create
-          a.button Join with code
+        #singlecreate.create
+          a.button Create a game
 
 
       #ingametab.lobby__app__content.lseeks(style="display:none")

@@ -15,6 +15,12 @@ $('#lobbycreate').click(function(e) {
   $('.game-setup').css("display" , "flex");
 });
 
+//lobby create game button
+$('#singlecreate').click(function(e) {
+  $('.game-setup').css("display" , "flex");
+});
+
+
 //game creation overlay
 $('#modal-overlay').click(function(e){
   switch(e.target.className){
