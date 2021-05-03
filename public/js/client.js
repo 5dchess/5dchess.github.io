@@ -592,9 +592,6 @@ var Client = (function(window) {
       
     }
 
-    // Create socket connection
-    socket = io.connect();
-
 
     // Attach event handlers
     attachSocketEventHandlers();
