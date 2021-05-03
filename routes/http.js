@@ -71,7 +71,7 @@ var home = function(req, res) {
   res.render('home');
   
   //generates client-side things
-  startClient(res,req);
+  startClient(req,res);
 };
 
 //GAME render
@@ -95,20 +95,10 @@ var startClient = function(req, res) {
   req.session.regenerate(function(err) {
     if (err) { res.redirect('/'); return; }
 
-    // Validate form input
-    var validData = validateStartGame(req);
-    if (!validData) { res.redirect('/'); return; }
-
-    // Create new game
-    var gameID = DB.add(validData);
 
     // Save data to session
-    req.session.gameID      = gameID;
-    req.session.playerColor = validData.playerColor;
-    req.session.playerName  = validData.playerName;
-
-    // Redirect to game page
-    res.redirect('/game/'+gameID);
+    req.session.games      = [];        //list of games the player is in
+    req.session.playerName  = "player"; //player name
   });
 };
 
