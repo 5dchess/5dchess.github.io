@@ -25,7 +25,7 @@ head
 #modal-overlay.game-setup(style="display:none")
   #modal-wrap
     span.close(data-icon='L')
-    div
+    div#createoverlay
       h2 Create a game
       form(method='post', action='/setup/hook/sri-placeholder', novalidate='novalidate', data-random-color-variants='5,6,9,7,8', data-type='hook')
         .variant.label_select
@@ -140,7 +140,17 @@ head
           | Rating: 
           strong(data-icon='') 1500
           |  Racing Kings
-
+          
+    div#joinoverlay
+      h2 Play with a friend
+      form(method='post', action='/setup/friend', novalidate='novalidate', data-random-color-variants='5,6,9,7,8', data-type='friend')
+        .fen_position.optional_config(style='display: block;')
+          .fen_form(data-validate-url='/setup/validate-fen')
+            input#form3-fen.form-control(name='fen', placeholder='Paste the FEN text here')
+            a.button.button-empty(data-icon='m', title='Board editor', href='/editor')
+          a.board_editor(href='/editor')
+            span.preview
+    
 header#top
   .site-title-nav
     input#tn-tg.topnav-toggle.fullscreen-toggle(type='checkbox' autocomplete='off' aria-label='Navigation')
@@ -283,7 +293,7 @@ header#top
           
         spacer(type="block", height="20")
         
-        #lobbyjoin.create
+        #lobbyjoin.create(style="padding:0.5em 0.8em")
           a.button Join with code
 
 

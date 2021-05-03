@@ -1,5 +1,5 @@
 const tabs = {lobby:'lobbytab',spec:'spectab',private:'privatetab',ingame:'ingametab'};
-
+var setup_mode = null;
 
 //switching between tabs
 $('#tabs').click(function (e) {
@@ -13,11 +13,19 @@ $('#tabs').click(function (e) {
 //lobby create game button
 $('#lobbycreate').click(function(e) {
   $('.game-setup').css("display" , "flex");
+  setup_mode = "multi-create";
+});
+
+//lobby join game button
+$('#lobbyjoin').click(function(e) {
+  $('.game-setup').css("display" , "flex");
+  setup_mode = "multi-join";
 });
 
 //lobby create game button
 $('#singlecreate').click(function(e) {
   $('.game-setup').css("display" , "flex");
+  setup_mode = "single-create"
 });
 
 
