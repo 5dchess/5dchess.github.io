@@ -32,7 +32,11 @@ $('#singlecreate').click(function(e) {
 //game creation overlay
 $('#modal-overlay').click(function(e){
   switch(e.target.className){
-    case "close":  $('.game-setup').css("display" , "none");
+    case "close":  
+      console.log("err?");
+      let ancestor = document.getElementById('modal-overlay');
+      for(let foo of ancestor.getElementsByTagName('*')) foo.setAttribute('display', 'none');
+      $('.game-setup').css("display" , "none");
   }
 });
 
