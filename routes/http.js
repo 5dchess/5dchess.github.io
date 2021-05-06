@@ -148,7 +148,6 @@ var joinGame = function(req, res) {
  * Redirect non-existent routes to the home page
  */
 var invalid = function(req, res) {
-
   // Go home HTTP request, you're drunk
   res.redirect('/');
 };
