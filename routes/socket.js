@@ -100,30 +100,11 @@ var move = function(data) {
 };
 
 /**
-  Recalculates and emits valid moves from input data
-*/
-
-var recalc = function(data){
-  var game = DB.find(data.gameID);
-  let temp = {spacetime:deepClone(game.spacetime),validMoves:deepClone(game.validMoves),checks:deepClone(game.checks),present:game.present};
-  //temporarily borrows current game to compute new moves and checks
-  game.spacetime = data.data;
-  game.getMoves();
-  game.getChecks();
-  game.findPresent();
-  IO.sockets.in(data.gameID).emit('recalc', {player:data.player,data:{validMoves:game.validMoves,checks:game.checks,present:game.present}});
-  game.spacetime = temp.spacetime;
-  game.validMoves = temp.validMoves;
-  game.checks = temp.checks;
-  game.present = temp.present;
-}
-
-/**
  * Forfeit a game
  * Emits an "update" event on success or an "error" event on failure
  */
-var forfeit = function(gameID) {
 
+var forfeit = function(gameID) {
   var sess      = this.handshake.session;
   var debugInfo = {
     socketID : this.id,
@@ -207,7 +188,6 @@ exports.attach = function(io, db) {
     socket.on('move', move);
     socket.on('forfeit', forfeit);
     socket.on('disconnect', disconnect);
-    socket.on('recalc', recalc);
 
     console.log('Socket '+socket.id+' connected');
   });
