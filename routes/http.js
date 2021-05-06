@@ -153,6 +153,14 @@ var invalid = function(req, res) {
 };
 
 /**
+ * Matchmaking
+ */
+var quickMatch = function(req, res){
+  console.log(req);
+  res.redirect('/start');
+}
+
+/**
  * Attach route handlers to the app
  */
 exports.attach = function(app, db) {
@@ -162,5 +170,6 @@ exports.attach = function(app, db) {
   app.get('/game/:id', game);
   app.post('/start',   startGame);
   app.post('/join',    joinGame);
+  app.post('/matchup', quickMatch);
   app.all('*',         invalid);
 };
