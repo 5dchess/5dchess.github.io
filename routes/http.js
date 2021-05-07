@@ -1,4 +1,5 @@
 var DB = null;
+var PB = null;
 
 /**
  * Validate session data for "Game" page
@@ -164,7 +165,8 @@ var quickMatch = function(req, res){
  * Attach route handlers to the app
  */
 exports.attach = function(app, db) {
-  DB = db;
+  DB = db.game;
+  PB = db.player;
 
   app.get('/',         home);
   app.get('/game/:id', game);
