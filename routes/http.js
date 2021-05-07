@@ -158,7 +158,7 @@ var invalid = function(req, res) {
  */
 var quickMatch = function(req, res){
   console.log(req.body);
-  res.redirect('/uwu');
+  res.redirect('/start');
 }
 
 /**
