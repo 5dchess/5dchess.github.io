@@ -1,5 +1,6 @@
 var IO = null;
 var DB = null;
+var PB = null;
 
 /**
  * Add player to game
@@ -178,7 +179,8 @@ var disconnect = function() {
  */
 exports.attach = function(io, db) {
   IO = io;
-  DB = db;
+  DB = db.game;
+  PB = db.player;
 
   // When a new socket connection is made
   io.sockets.on('connection', function (socket) {
