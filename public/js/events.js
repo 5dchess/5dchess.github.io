@@ -59,8 +59,22 @@ $('#modal-overlay').click(function(e){
 
 //checks if any games are in play
 var socket = null;
-socket.on('update', function(data) {
+socket.emit("gamereq",true);
+socket.on('gamereq', function(data) {
   console.log(data);
+  
+  //updates inplay tab visibility
+  if (data.inplay.length==0){
+    $('#ingame').css("display","none");
+  }
+  else if (data.inplay.length==1){
+    $('#ingame').css("display","block");
+    $('#ingame').textContent = "1 game in play";
+  }
+  else{
+    $('#ingame').css("display","block");
+    $('#ingame').textContent = data.inplay.length+ "games in play";
+  }
   
 });
 socket.emit("hi");
