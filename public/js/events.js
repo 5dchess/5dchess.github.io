@@ -58,4 +58,9 @@ $('#modal-overlay').click(function(e){
 });
 
 //checks if any games are in play
-
+var socket = null;
+socket.on('update', function(data) {
+  console.log(data);
+  
+});
+socket.emit("hi");
