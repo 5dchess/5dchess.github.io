@@ -141,7 +141,7 @@ var Client = (function(window) {
   var pawnPromotionPrompt = null;
   var forfeitPrompt       = null;
   
-  var games
+  var games;
   
   function draw(){
     //canvas part
