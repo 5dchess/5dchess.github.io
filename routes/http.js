@@ -100,7 +100,7 @@ var newGame = function(req, res) {
     
 
     // Create new game
-    var gameID = DB.add(validData);
+    var gameID = DB.add({});
 
     // Save data to session
     req.session.gameID      = gameID;
