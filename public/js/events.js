@@ -58,8 +58,9 @@ $('#modal-overlay').click(function(e){
 });
 
 //checks if any games are in play
-var socket = null;
+var socket = io.connect();
 socket.emit("gamereq",true);
+
 socket.on('gamereq', function(data) {
   console.log(data);
   
@@ -77,4 +78,3 @@ socket.on('gamereq', function(data) {
   }
   
 });
-socket.emit("hi");
