@@ -155,12 +155,15 @@ var invalid = function(req, res) {
  * Matchmaking
  */
 var quickMatch = function(req, res){
+  //no form submission, redirect to home page
   if(!req.body.color){
     res.redirect('/');
   }
   
+  //
   res.render('wait');
 }
+
 
 /**
  * Attach route handlers to the app
