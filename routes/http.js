@@ -91,15 +91,13 @@ var game = function(req, res) {
  * Process "Start Game" form submission
  * Redirects to game page on success or home page on failure
  */
-var startGame = function(req, res) {
+var newGame = function(req, res) {
 
   // Create a new session
   req.session.regenerate(function(err) {
     if (err) { res.redirect('/'); return; }
-
-    // Validate form input
-    var validData = validateStartGame(req);
-    if (!validData) { res.redirect('/'); return; }
+    
+    
 
     // Create new game
     var gameID = DB.add(validData);
@@ -157,10 +155,11 @@ var invalid = function(req, res) {
  * Matchmaking
  */
 var quickMatch = function(req, res){
-  console.log(req.body);
-  for(let g of DB){
-    
+  if(!req.body.color){
+    res.redirect('/');
   }
+  
+  res.render('wait');
 }
 
 /**
@@ -172,8 +171,7 @@ exports.attach = function(app, db) {
 
   app.get('/',         home);
   app.get('/game/:id', game);
-  app.post('/start',   startGame);
+  app.post('/start',   quickMatch);
   app.post('/join',    joinGame);
-  app.post('/matchup', quickMatch);
   app.all('*',         invalid);
 };
