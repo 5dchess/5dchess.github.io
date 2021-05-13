@@ -69,11 +69,12 @@ socket.on('gamereq', function(data) {
   }
   else if (data.inplay.length==1){
     $('#ingame').css("display","block");
-    $('#ingame').textContent = "1 game in play";
+    console.log("owo");
+    $('#ingame')[0].textContent = "1 game in play";
   }
   else{
     $('#ingame').css("display","block");
-    $('#ingame').textContent = data.inplay.length+ "games in play";
+    $('#ingame')[0].textContent = data.inplay.length+ "games in play";
   }
   
 });

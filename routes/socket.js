@@ -177,7 +177,7 @@ var disconnect = function() {
  * Sends player information
  */
 var gamereq = function() {
-  this.emit('gamereq',{inplay:[]});
+  this.emit('gamereq',{inplay:[1]});
 }
 
 /**

@@ -122,7 +122,7 @@ var joinGame = function(req, res) {
 
   // Create a new session
   req.session.regenerate(function(err) {
-    if (err) { res.redirect('/'); return; }
+    if (err) {res.redirect('/'); return; }
 
     // Validate form input
     var validData = validateJoinGame(req);
@@ -158,7 +158,9 @@ var invalid = function(req, res) {
  */
 var quickMatch = function(req, res){
   console.log(req.body);
-  res.redirect('/start');
+  for(let g of DB){
+    
+  }
 }
 
 /**
