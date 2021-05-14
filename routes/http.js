@@ -100,12 +100,11 @@ var newGame = function(req, res) {
     
 
     // Create new game
-    var gameID = DB.add({});
+    var gameID = DB.add({player:req.SessionID, color:req.color});
 
     // Save data to session
     req.session.gameID      = gameID;
-    req.session.playerColor = req.playerColor;
-    req.session.playerName  = req.playerName;
+    req.session.playerColor = req.color;
 
     // Redirect to game page
     res.redirect('/game/'+gameID);
@@ -159,11 +158,10 @@ var quickMatch = function(req, res){
   if(!req.body.color){
     res.redirect('/');
   }
+  console.log(req.body);
   
   //
-  for(let gameID in DB){
-    
-  }
+  res.redirect('')
   res.render('wait');
 }
 
@@ -178,6 +176,7 @@ exports.attach = function(app, db) {
   app.get('/',         home);
   app.get('/game/:id', game);
   app.post('/start',   quickMatch);
+  app.post('/newgame', newGame);
   app.post('/join',    joinGame);
   app.all('*',         invalid);
 };
