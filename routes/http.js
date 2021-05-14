@@ -104,8 +104,8 @@ var newGame = function(req, res) {
 
     // Save data to session
     req.session.gameID      = gameID;
-    req.session.playerColor = validData.playerColor;
-    req.session.playerName  = validData.playerName;
+    req.session.playerColor = req.playerColor;
+    req.session.playerName  = req.playerName;
 
     // Redirect to game page
     res.redirect('/game/'+gameID);
@@ -161,6 +161,9 @@ var quickMatch = function(req, res){
   }
   
   //
+  for(let gameID in DB){
+    
+  }
   res.render('wait');
 }
 
