@@ -93,6 +93,7 @@ var game = function(req, res) {
  */
 var newGame = function(req, res) {
 
+  console.log(req.body);
   // Create a new session
   req.session.regenerate(function(err) {
     if (err) { res.redirect('/'); return; }
@@ -157,12 +158,10 @@ var quickMatch = function(req, res){
   //no form submission, redirect to home page
   if(!req.body.color){
     res.redirect('/');
-  }
-  console.log(req.body);
+  }  
   
-  //
-  res.redirect('')
-  res.render('wait');
+  res.redirect('/newgame');
+  //res.render('wait');
 }
 
 
