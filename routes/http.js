@@ -101,7 +101,7 @@ var newGame = function(req, res) {
     
 
     // Create new game
-    var gameID = DB.add({player:req.SessionID, color:req.color});
+    
 
     // Save data to session
     req.session.gameID      = gameID;
@@ -161,20 +161,22 @@ var quickMatch = function(req, res){
   }  
   
   //searches for games to join as public
-  let
-  
+  let newgame = true;
   if(req.views=='public'){
     for(let key in DB){
       if(DB[key].players[req.body.color]==null){
         res.gameID = key;
         res.redirect('/game/'+key);
+        newgame = false;
       }
     }
   }
   
-  res.color = req.color;
-  res.views = req.views;
-  res.redirect('/newgame');
+  if(newgame){
+    var gameID = DB.add({player:req.SessionID, color:req.color, views:req.views});
+    res.redirect('/game/'+gameID);
+  }
+  
   //res.render('wait');
 }
 
