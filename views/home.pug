@@ -60,10 +60,10 @@ head
         .mode_choice.buttons
           group.radio
             div
-              input#sf_mode_0(type='radio', name='mode', value='0',checked='checked')
+              input#sf_mode_0(type='radio', name='views', value='public',checked='checked')
               label.required(for='sf_mode_0') Public
             div
-              input#sf_mode_1(type='radio', name='mode', value='1')
+              input#sf_mode_1(type='radio', name='views', value='private')
               label.required(for='sf_mode_1') Private
         .optional_config
           .rating-range-config

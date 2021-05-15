@@ -160,6 +160,9 @@ var quickMatch = function(req, res){
     res.redirect('/');
   }  
   
+  if(req.views=='public'){
+    
+  }
   
   res.color = req.color;
   res.redirect('/newgame');
