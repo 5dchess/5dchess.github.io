@@ -160,11 +160,20 @@ var quickMatch = function(req, res){
     res.redirect('/');
   }  
   
+  //searches for games to join as public
+  let
+  
   if(req.views=='public'){
-    
+    for(let key in DB){
+      if(DB[key].players[req.body.color]==null){
+        res.gameID = key;
+        res.redirect('/game/'+key);
+      }
+    }
   }
   
   res.color = req.color;
+  res.views = req.views;
   res.redirect('/newgame');
   //res.render('wait');
 }
