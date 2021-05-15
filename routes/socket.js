@@ -26,7 +26,7 @@ var join = function(gameID) {
   // Lookup game in database
   var game = DB.find(gameID);
   if (!game) {
-    console.log('ERROR: Game Not Found', debugInfo);
+    console.log('JOIN ERROR: Game Not Found', debugInfo);
     this.emit('error', {message: "Game not found"});
     return;
   }

@@ -166,6 +166,7 @@ var quickMatch = function(req, res){
     for(let key in DB){
       if(DB[key].players[req.body.color]==null){
         res.gameID = key;
+        console.log("Joining game "+key);
         res.redirect('/game/'+key);
         newgame = false;
       }
@@ -174,6 +175,7 @@ var quickMatch = function(req, res){
   
   if(newgame){
     var gameID = DB.add({player:req.SessionID, color:req.color, views:req.views});
+    console.log("Creating new game "+gameID);
     res.redirect('/game/'+gameID);
   }
   
