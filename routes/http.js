@@ -160,6 +160,8 @@ var quickMatch = function(req, res){
     res.redirect('/');
   }  
   
+  
+  res.color = req.color;
   res.redirect('/newgame');
   //res.render('wait');
 }
