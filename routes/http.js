@@ -162,24 +162,43 @@ var quickMatch = function(req, res){
   
   //searches for games to join as public
   let newgame = true;
-  if(req.body.views=='public'){
-    for(let key in DB){
-      if(DB[key].players[req.body.color]==null){
-        res.gameID = key;
+  //random color
+  if(req.body.color=='random'){
+    for(let key in DB.games){
+      console.log("K"+key);
+      if(DB.games[key].players['white']==null){
+        console.log("Joining game "+key);
+        res.redirect('/game/'+key);
+        newgame = false;
+      }
+      else if(DB.games[key].players['black']==null){
         console.log("Joining game "+key);
         res.redirect('/game/'+key);
         newgame = false;
       }
     }
   }
+  //set color
+  else{
+    if(req.body.views=='public'){
+      for(let key in DB.games){
+        if(DB.games[key].players[req.body.color]==null){
+          res.gameID = key;
+          console.log("Joining game "+key);
+          res.redirect('/game/'+key);
+          newgame = false;
+        }
+      }
+    }
+  }
   
+  //creates a game
   if(newgame){
-    var gameID = DB.add({player:req.SessionID, color:req.color, views:req.views});
+    let newcolor = req.body.color=='random'?(Math.random()>0.5?'white':'black'):req.body.color;
+    var gameID = DB.add({player:req.SessionID, color:newcolor, views:req.body.views});
     console.log("Creating new game "+gameID);
     res.redirect('/game/'+gameID);
   }
-  
-  //res.render('wait');
 }
 
 
