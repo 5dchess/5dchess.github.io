@@ -176,7 +176,9 @@ var disconnect = function() {
 /**
  * Sends player information
  */
-var gamereq = function() {
+var gamereq = function(data) {
+  if(!(data.id in PB)) PB.add(data);
+  
   this.emit('gamereq',{inplay:[1]});
 }
 

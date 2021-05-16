@@ -1,6 +1,18 @@
 const tabs = {lobby:'lobbytab',spec:'spectab',private:'privatetab',ingame:'ingametab'};
 var setup_mode = null;
 
+//getting cookie
+function getJSessionId(){
+    var jsId = document.cookie.match(/JSESSIONID=[^;]+/);
+    if(jsId != null) {
+        if (jsId instanceof Array)
+            jsId = jsId[0].substring(11);
+        else
+            jsId = jsId.substring(11);
+    }
+    return jsId;
+}
+
 //switching between tabs
 $('#tabs').click(function (e) {
   if(!(e.target.id) in Object.keys(tabs)) return;
@@ -58,7 +70,7 @@ $('#modal-overlay').click(function(e){
 
 //checks if any games are in play
 var socket = io.connect();
-socket.emit("gamereq",true);
+socket.emit("gamereq",{id:getJSessionId()});
 
 socket.on('gamereq', function(data) {
   console.log(data);

@@ -162,7 +162,7 @@ var quickMatch = function(req, res){
   
   //searches for games to join as public
   let newgame = true;
-  if(req.views=='public'){
+  if(req.body.views=='public'){
     for(let key in DB){
       if(DB[key].players[req.body.color]==null){
         res.gameID = key;
