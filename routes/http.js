@@ -2,70 +2,6 @@ var DB = null;
 var PB = null;
 
 /**
- * Validate session data for "Game" page
- * Returns valid data on success or null on failure
- */
-var validateGame = function(req) {
-
-  // These must exist
-  if (!req.session.gameID)      { return null; }
-  if (!req.session.playerColor) { return null; }
-  if (!req.session.playerName)  { return null; }
-  if (!req.params.id)           { return null; }
-
-  // These must match
-  if (req.session.gameID !== req.params.id) { return null; }
-
-  return {
-    gameID      : req.session.gameID,
-    playerColor : req.session.playerColor,
-    playerName  : req.session.playerName
-  };
-};
-
-/**
- * Validate "Start Game" form input
- * Returns valid data on success or null on failure
- */
-var validateStartGame = function(req) {
-
-  // These must exist
-  if (!req.body['player-color']) { return null; }
-
-  // Player Color must be 'white' or 'black'
-  if (req.body['player-color'] !== 'white' && req.body['player-color'] !== 'black') { return null; }
-
-  // If Player Name consists only of whitespace, set as 'Player 1'
-  if (/^\s*$/.test(req.body['player-name'])) { req.body['player-name'] = 'Player 1'; }
-
-  return {
-    playerColor : req.body['player-color'],
-    playerName  : req.body['player-name']
-  };
-};
-
-/**
- * Validate "Join Game" form input
- * Returns valid data on success or null on failure
- */
-var validateJoinGame = function(req) {
-
-  // These must exist
-  if (!req.body['game-id']) { return null; }
-
-  // If Game ID consists of only whitespace, return null
-  if (/^\s*$/.test(req.body['game-id'])) { return null; }
-
-  // If Player Name consists only of whitespace, set as 'Player 2'
-  if (/^\s*$/.test(req.body['player-name'])) { req.body['player-name'] = 'Player 2'; }
-
-  return {
-    gameID      : req.body['game-id'],
-    playerName  : req.body['player-name']
-  };
-};
-
-/**
  * Render "Home" Page
  */
 var home = function(req, res) {
@@ -80,11 +16,24 @@ var home = function(req, res) {
 var game = function(req, res) {
 
   // Validate session data
-  var validData = validateGame(req);
-  if (!validData) { res.redirect('/'); return; }
+  req.session.regenerate(function(err) {
+    if (err) {res.redirect('/'); return; }
+
+    // Find specified game
+    console.log("AAa+ "+window.location.href.substring("5dchess.glitch.me/game/".length));
+    var game = DB.find(window.location.href.substring("5dchess.glitch.me/game/".length));
+    if (!game) { res.redirect('/'); return;}
+
+    // Determine which player (color) to join as
+    var joinColor = (game.players[0].joined) ? game.players[1].color : game.players[0].color;
+
+    // Save data to session
+    req.session.gameID      = null;
+    req.session.playerColor = joinColor;
+  });
 
   // Render the game page
-  res.render('game', validData);
+  res.render('game');
 };
 
 /**
@@ -212,7 +161,6 @@ exports.attach = function(app, db) {
   app.get('/',         home);
   app.get('/game/:id', game);
   app.post('/start',   quickMatch);
-  app.post('/newgame', newGame);
   app.post('/join',    joinGame);
   app.all('*',         invalid);
 };
