@@ -73,6 +73,7 @@ var match = function(req, res){
   else{
     if(req.body.views=='public'){
       for(let key in DB.games){
+        console.log(DB.games[key].players);
         if(DB.games[key].players[req.body.color]==null){
           res.gameID = key;
           console.log("Joining game "+key);
