@@ -14,7 +14,7 @@ var home = function(req, res) {
  * Render "Game" Page (or redirect to home page if session is invalid)
  */
 var game = function(req, res) {
-  
+  console.log('owo'+req.SessionID);
   // Validate session data
   req.session.regenerate(function(err) {
     console.log('owo'+req.SessionID);
@@ -47,7 +47,7 @@ var invalid = function(req, res) {
 /**
  * Matchmaking
  */
-var quickMatch = function(req, res){
+var match = function(req, res){
   //no form submission, redirect to home page
   if(!req.body.color){
     res.redirect('/');
@@ -87,7 +87,7 @@ var quickMatch = function(req, res){
   //creates a game
   if(newgame){
     let newcolor = req.body.color=='random'?(Math.random()>0.5?'white':'black'):req.body.color;
-    console.log('owo'+req.SessionID);
+    console.log('owo'+req.session.SessionID);
     var gameID = DB.add({pID:req.SessionID, color:newcolor, views:req.body.views});
     console.log("Creating new game "+gameID);
     res.redirect('/game/'+gameID);
@@ -104,7 +104,6 @@ exports.attach = function(app, db) {
 
   app.get('/',         home);
   app.get('/game/:id', game);
-  app.post('/start',   quickMatch);
-  app.post('/join',    joinGame);
+  app.post('/start',   match);
   app.all('*',         invalid);
 };
