@@ -548,10 +548,7 @@ header#top
   script(src="/js/events.js")
 
 script(src="/js/fastclick.js")
-script.
-  $(document).ready(function() {
-    FastClick.attach(document.body);
-  });
-  $.get("nav.pug", function(data){
-    $("#top").replaceWith(data);
-  });
+  script.
+    $(document).ready(function() {
+      FastClick.attach(document.body);
+    });
