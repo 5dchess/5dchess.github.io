@@ -87,7 +87,7 @@ var match = function(req, res){
   //creates a game
   if(newgame){
     let newcolor = req.body.color=='random'?(Math.random()>0.5?'white':'black'):req.body.color;
-    console.log('owo'+req.session.SessionID);
+    console.log('owo'+req.params.id);
     var gameID = DB.add({pID:req.SessionID, color:newcolor, views:req.body.views});
     console.log("Creating new game "+gameID);
     res.redirect('/game/'+gameID);
