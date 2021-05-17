@@ -22,23 +22,16 @@ head
   meta(property='og:url', content='https://lichess.org/FIpndcTE')
   meta(property='og:type', content='website')
   meta(property='og:site_name', content='lichess.org')
-  meta(name='twitter:card', content='summary')
-  meta(name='twitter:title', content='Correspondence casual Chess • Challenge from DROP_TABLES (1500?)')
-  meta(name='twitter:description', content='Join the challenge or watch the game here.')
-  link(href='/blog.atom', type='application/atom+xml', rel='alternate', title='Blog')
+
   link(rel='preload', href='https://lichess1.org/assets/_1zWnn9/font/lichess.woff2', as='font', type='font/woff2', crossorigin='')
   link(rel='preload', href='https://lichess1.org/assets/_1zWnn9/font/lichess.chess.woff2', as='font', type='font/woff2', crossorigin='')
   link(rel='manifest', href='/manifest.json')
-  meta(name='twitter:site', content='@lichess')
   link(rel='jslicense', href='/source')
   link(rel='stylesheet', href='https://lichess1.org/assets/_1zWnn9/css/complete.light.min.css')
   script(src='https://lichess1.org/assets/_1zWnn9/compiled/userComplete.min.js')
   link(rel='stylesheet', href='https://lichess1.org/assets/_1zWnn9/css/dasher.light.min.css')
   script(src='https://lichess1.org/assets/_1zWnn9/compiled/dasher.min.js')
-form#blind-mode(action='/toggle-blind-mode', method='POST')
-  input(type='hidden', name='enable', value='1')
-  input(type='hidden', name='redirect', value='/FIpndcTE')
-  button(type='submit') Accessibility: Enable blind mode
+
 header#top
   .site-title-nav
     input#tn-tg.topnav-toggle.fullscreen-toggle(type='checkbox', autocomplete='off', aria-label='Navigation')

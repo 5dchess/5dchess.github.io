@@ -1,73 +1,75 @@
-block content
+extends wait
 
-  nav.navbar.navbar-inverse.navbar-static-top(role="navigation")
-    .navbar-header
-      a.navbar-brand(href="/") 5D Chess
+block content 
+  div(style="display:none")
+    nav.navbar.navbar-inverse.navbar-static-top(role="navigation")
+      .navbar-header
+        a.navbar-brand(href="/") 5D Chess
 
-  div.container
+    div.container
 
-    #messages
-
-    #game
-
-      #title-bar
-        button#submit.btn.btn-sm.btn-default.pull-right Submit Moves
-        button#forfeit.btn.btn-sm.btn-default.pull-right ⚐
-        button#undo.btn.btn-sm.btn-default.pull-right ↻
-        span Game:&nbsp;
-        strong #{gameID}
-      
-      #status-bar
-        span Status: 
-        strong#status ●  
+      #messages
 
       #game
-        canvas(id='c')
-          
+
+        #title-bar
+          button#submit.btn.btn-sm.btn-default.pull-right Submit Moves
+          button#forfeit.btn.btn-sm.btn-default.pull-right ⚐
+          button#undo.btn.btn-sm.btn-default.pull-right ↻
+          span Game:&nbsp;
+          strong #{gameID}
+
+        #status-bar
+          span Status: 
+          strong#status ●  
+
+        #game
+          canvas(id='c')
 
 
-    #game-over.modal.fade(role="dialog")
-      .modal-dialog
-        .modal-content
-          .modal-body.text-center
-            h2.alert
-          .modal-footer
-            a.btn.btn-primary(href="/") Continue
 
-    #pawn-promotion.modal.fade(role="dialog")
-      .modal-dialog
-        .modal-content
-          .modal-body.text-center
-            form
-              h3 Promote Pawn
-              .btn-group(data-toggle="buttons")
-                label.btn.btn-default
-                  input(type="radio", name="promotion", value=2)
-                  img#N
+      #game-over.modal.fade(role="dialog")
+        .modal-dialog
+          .modal-content
+            .modal-body.text-center
+              h2.alert
+            .modal-footer
+              a.btn.btn-primary(href="/") Continue
 
-                label.btn.btn-default
-                  input(type="radio", name="promotion", value=3)
-                  img#B
+      #pawn-promotion.modal.fade(role="dialog")
+        .modal-dialog
+          .modal-content
+            .modal-body.text-center
+              form
+                h3 Promote Pawn
+                .btn-group(data-toggle="buttons")
+                  label.btn.btn-default
+                    input(type="radio", name="promotion", value=2)
+                    img#N
 
-                label.btn.btn-default
-                  input(type="radio", name="promotion", value=1)
-                  img#R
+                  label.btn.btn-default
+                    input(type="radio", name="promotion", value=3)
+                    img#B
 
-                label.btn.btn-default.active
-                  input(type="radio", name="promotion", value=4, checked="checked")
-                  img#Q
-                  
-          .modal-footer
-            button.btn.btn-primary Promote
+                  label.btn.btn-default
+                    input(type="radio", name="promotion", value=1)
+                    img#R
 
-    #forfeit-game.modal.fade(role="dialog")
-      .modal-dialog
-        .modal-content
-          .modal-body.text-center
-            h2 Forfeit Game?
-          .modal-footer
-            button#cancel-forfeit.btn.btn-default Cancel
-            button#confirm-forfeit.btn.btn-primary Forfeit
+                  label.btn.btn-default.active
+                    input(type="radio", name="promotion", value=4, checked="checked")
+                    img#Q
+
+            .modal-footer
+              button.btn.btn-primary Promote
+
+      #forfeit-game.modal.fade(role="dialog")
+        .modal-dialog
+          .modal-content
+            .modal-body.text-center
+              h2 Forfeit Game?
+            .modal-footer
+              button#cancel-forfeit.btn.btn-default Cancel
+              button#confirm-forfeit.btn.btn-primary Forfeit
 
 
 
