@@ -14,10 +14,10 @@ var home = function(req, res) {
  * Render "Game" Page (or redirect to home page if session is invalid)
  */
 var game = function(req, res) {
-  console.log('owo'+req.SessionID);
   // Validate session data
   req.session.regenerate(function(err) {
-    console.log('owo'+req.SessionID);
+    console.log('w');
+    console.log(req.session);
     if (err) {res.redirect('/'); return; }
 
     // Find specified game
@@ -87,7 +87,7 @@ var match = function(req, res){
   //creates a game
   if(newgame){
     let newcolor = req.body.color=='random'?(Math.random()>0.5?'white':'black'):req.body.color;
-    console.log('owo'+req.params.id);
+    console.log(req.params);
     var gameID = DB.add({pID:req.SessionID, color:newcolor, views:req.body.views});
     console.log("Creating new game "+gameID);
     res.redirect('/game/'+gameID);
