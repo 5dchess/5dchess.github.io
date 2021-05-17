@@ -5,7 +5,12 @@ var PB = null;
  * Render "Home" Page
  */
 var home = function(req, res) {
-
+  //Creates new player profile
+  req.session.regenerate(function(err) {
+    if (err) {res.redirect('/'); return; }
+    req.session.playerID = PB.add();
+  });
+  
   // Welcome
   res.render('home');
 };
@@ -15,22 +20,16 @@ var home = function(req, res) {
  */
 var game = function(req, res) {
   // Validate session data
-  req.session.regenerate(function(err) {
-    console.log('w');
-    console.log(req.session);
-    if (err) {res.redirect('/'); return; }
 
-    // Find specified game
-    let gameID = req.route.params.id;
-    var game = DB.find(gameID);
-    if (!game) { res.redirect('/'); return;}
+  // Find specified game
+  let gameID = req.route.params.id;
+  var game = DB.find(gameID);
+  if (!game) { res.redirect('/'); return;}
 
-    // Save data to session
-    req.session.gameID      = null;
-    if(game.players['white']==req.SessionID){
-      req.session.playerColor;
-    }
-  });
+  // Save data to session
+  if(game.players['white']==req.SessionID){
+    req.session.playerColor;
+  }
 
   // Render the game page
   res.render('game');
@@ -86,9 +85,10 @@ var match = function(req, res){
   
   //creates a game
   if(newgame){
+    //random color
     let newcolor = req.body.color=='random'?(Math.random()>0.5?'white':'black'):req.body.color;
-    console.log(req.params);
-    var gameID = DB.add({pID:req.SessionID, color:newcolor, views:req.body.views});
+    
+    var gameID = DB.add({pID:req.playerID, color:newcolor, views:req.body.views},'multi');
     console.log("Creating new game "+gameID);
     res.redirect('/game/'+gameID);
   }

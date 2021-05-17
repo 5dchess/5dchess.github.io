@@ -173,14 +173,6 @@ var disconnect = function() {
   console.log('Socket '+this.id+' disconnected');
 };
 
-/**
- * Sends player information
- */
-var gamereq = function(data) {
-  if(!(data.id in PB)) PB.add(data);
-  
-  this.emit('gamereq',{inplay:[1]});
-}
 
 /**
  * Attach route/event handlers for socket.io
@@ -198,7 +190,6 @@ exports.attach = function(io, db) {
     socket.on('move', move);
     socket.on('forfeit', forfeit);
     socket.on('disconnect', disconnect);
-    socket.on('gamereq',gamereq);
 
     console.log('Socket '+socket.id+' connected');
   });
